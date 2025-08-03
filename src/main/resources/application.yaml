@@ -1,1 +1,29 @@
-spring.application.name=Task
+spring:
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/wallet_db
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Europe/Moscow
+  liquibase:
+    enabled: true
+    change-log: db/changelog/2025/08/changelog-master.xml
+    default-schema: public
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+    contexts: dev
+    drop-first: false
+
+server:
+  servlet:
+    context-path: /
+  port: 8080
+
