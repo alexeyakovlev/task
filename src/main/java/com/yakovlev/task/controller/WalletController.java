@@ -35,7 +35,7 @@ public class WalletController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public WalletDTO deposit(@RequestBody WalletDTO walletDTO) throws WalletNotFoundException {
+    public WalletDTO changeAmount(@RequestBody WalletDTO walletDTO) throws WalletNotFoundException {
         if (walletDTO.getOperationType().equals(OperationType.DEPOSIT))
             return walletService.deposit(walletDTO);
         else
